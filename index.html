@@ -13,6 +13,11 @@
   <!-- <link rel="shortcut icon" href="./assets/img/favicon.png"> -->
   <link rel="stylesheet" href="./assets/css/plugins.css">
   <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    #about, #publications, #kong2024ability, #kong2022quantifying {
+      scroll-margin-top: var(--header-height, 150px);
+    }
+  </style>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJ4CK2EEZH"></script>
   <script src="./assets/js/analytics.js"></script>
@@ -22,12 +27,12 @@
 
 <body>
   <div class="content-wrapper">
-    <section class="wrapper bg-light wrapper-border">
+    <section class="wrapper bg-light wrapper-border sticky-top">
       <div class="container inner py-4">
         <div class="row gx-lg-8 gx-xl-12 gy-4 gy-lg-0">
           <div class="col-md-8 align-self-center text-center text-md-start navigation">
             <a href="./index.html">
-              <h3 class="text-black fs-30 mb-0">Junhan "Judy" Kong | 孔珺涵</h3>
+              <h3 class="text-black fs-30 mb-0">Junhan "Judy" Kong 孔珺涵</h3>
             </a>
           </div>
           <div class="col-md-4 align-self-center text-center text-md-start navigation">
@@ -54,13 +59,18 @@
                 <figure class="rounded py-md-2"><img src="./assets/img/me.jpg" alt=""/></figure>
               </div>
               <div class="col-md-8 add-padding">
-                <p>I am a Ph.D. candidate in the <a href="http://ischool.uw.edu/">Information School</a> at the <a href="http://www.washington.edu/">University of Washington</a>, advised by Prof. <a href="http://faculty.washington.edu/wobbrock/">Jacob O. Wobbrock</a>. Prior to that, I received my Bachelor's and Master's degrees in <a href="https://www.cs.cmu.edu/">Computer Science</a> with an additional major in <a href="https://www.hcii.cmu.edu/">Human-Computer Interaction</a> and minors in <a href="https://www.cmu.edu/dietrich/statistics-datascience/index.html">Statistics</a> and <a href="https://www.ml.cmu.edu/">Machine Learning</a> at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>, where I worked with Prof. <a href="https://www.cs.cmu.edu/~jbigham/">Jeffrey P. Bigham</a> and Prof. <a href="https://guoanhong.com/">Anhong Guo</a>. I have also worked at <a href="https://research.adobe.com/">Adobe Research</a> and <a href="https://about.meta.com/realitylabs/">Meta Reality Labs</a> as a research scientist intern.</p>
-                <p>I'm broadly interested in <b>human-computer interaction</b> and <b>accessibility</b>. My work seeks to enable computer technologies to understand the varying abilities of their users, and to design, implement, and evaluate tools to make technologies accessible and personalized by adapting to these abilities. Specifically, my work focuses on:
+                <p>Junhan "Judy" Kong is a final-year Ph.D. candidate in the <a href="http://ischool.uw.edu/">Information School</a> at the <a href="http://www.washington.edu/">University of Washington</a>, advised by Prof. <a href="http://faculty.washington.edu/wobbrock/">Jacob O. Wobbrock</a>. Prior to that, she received her Bachelor's and Master's degrees in <a href="https://www.cs.cmu.edu/">Computer Science</a> with an additional major in <a href="https://www.hcii.cmu.edu/">Human-Computer Interaction</a> and minors in <a href="https://www.cmu.edu/dietrich/statistics-datascience/index.html">Statistics</a> and <a href="https://www.ml.cmu.edu/">Machine Learning</a> at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>, where she worked with Prof. <a href="https://www.cs.cmu.edu/~jbigham/">Jeffrey P. Bigham</a> and Prof. <a href="https://guoanhong.com/">Anhong Guo</a>. She has also worked at <a href="https://research.adobe.com/">Adobe Research</a> and <a href="https://about.meta.com/realitylabs/">Meta Reality Labs</a> as a research scientist intern.</p>
+
+                <p>Her research is in <b>human-computer interaction (HCI)</b> with a focus on <b>accessibility</b>, <b>interaction techniques</b>, <b>adaptive interfaces</b>, <b>AR/VR</b>, and <b>human-centered AI</b>. Her work has been published at top-tier conferences including CHI, UIST, ASSETS, MobileHCI, and SUI, and has received the <a href="#kong2024ability">Best Paper Award</a> from <a href="https://mobilehci.acm.org/">MobileHCI</a> and a <a href="#kong2022quantifying">Best Paper Nomination</a> from <a href="https://assets26.sigaccess.org/">ASSETS</a>.</p>
+
+                <p>Her research is guided by a vision of computing systems that recognize and serve human diversity: technologies that <b><i>understand</i></b> and <b><i>adapt to</i></b> the varying situated abilities of their users, and infrastructures that empower designers and developers to create <b><i>accessible</i></b> and <b><i>personalized</i></b> interfaces.</p>
+
+                <!-- <p>I'm broadly interested in <b>human-computer interaction</b> and <b>accessibility</b>. My work seeks to enable computer technologies to understand the varying abilities of their users, and to design, implement, and evaluate tools to make technologies accessible and personalized by adapting to these abilities. Specifically, my work focuses on:
                   <ul>
                     <li>Quantitative characterization of human abilities through user input behavior and sensor data;</li>
                     <li>Mixed-initiative interface adaptations based on user abilities.</li>
                   </ul>
-                </p>
+                </p> -->
               </div>
             </div>
 
@@ -120,7 +130,7 @@
               </div>
             </div>
 
-            <div class="blog classic-view py-md-2">
+            <div id="kong2024ability" class="blog classic-view py-md-2">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -185,7 +195,7 @@
               </div>
             </div>
 
-            <div class="blog classic-view py-md-2">
+            <div id="kong2022quantifying" class="blog classic-view py-md-2">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -297,9 +307,10 @@
 
             <div class="widget">
               <p class="p-small"><a href="./assets/files/cv.pdf">Curriculum Vitae</a></p>
-              <p class="p-small"><a href="https://scholar.google.com/citations?user=JC950jYAAAAJ&hl=en&oi=sra/">Google Scholar</a></p>
               <p class="p-small">Email: <a href="mailto:junhank@uw.edu">junhank@uw.edu</a></p>
-              <p class="p-small">Twitter: <a href="https://twitter.com/junhankong/">@junhankong</a></p>
+              <p class="p-small"><a href="https://scholar.google.com/citations?user=JC950jYAAAAJ&hl=en&oi=sra/">Google Scholar</a></p>
+              <p class="p-small"><a href="https://www.linkedin.com/in/judy-kong-8aa80b128/">LinkedIn</a></p>
+              
             </div>
 
             <div class="widget">
@@ -312,11 +323,12 @@
 
             <div class="widget">
               <h4 class="widget-title mb-3">Updates</h4>
-              <p class="p-small"><b>02/01/2026</b> 1 paper submitted to IMWUT</p>
+              <p class="p-small"><b>07/02/2026</b> 1 paper accepted to ICMI</p>
+              <p class="p-small"><b>06/27/2026</b> Ran my first 10k!</p>
+              <!-- <p class="p-small"><b>06/12/2026</b> Took photos at the convocation for friends graduating this year!</p> -->
               <p class="p-small"><b>01/16/2026</b> 1 paper accepted to CHI</p>
               <p class="p-small"><b>10/30/2025</b> Wrapped up ASSETS SV work, huge pleasure working with the amazing SVs and the OC!</p>
               <p class="p-small"><b>10/22/2025</b> Passed my dissertation proposal!</p>
-              <p class="p-small"><b>09/11/2025</b> 4 papers submitted to CHI</p>
               <p class="p-small"><b>07/03/2025</b> 1 paper accepted to UIST</p>
               <!-- <p class="p-small"><b>07/02/2025</b> I'll be an SV co-chair for ASSETS '25, see you in Denver!</p> -->
               <p class="p-small"><b>04/28/2025</b> Presented 1 paper at CHI in Yokohama!</p>
@@ -377,6 +389,17 @@
   </div>
   <script src="./assets/js/plugins.js"></script>
   <script src="./assets/js/theme.js"></script>
+  <script>
+    function setHeaderOffset() {
+      var header = document.querySelector('.sticky-top');
+      if (header) {
+        document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+      }
+    }
+    setHeaderOffset();
+    window.addEventListener('load', setHeaderOffset);
+    window.addEventListener('resize', setHeaderOffset);
+  </script>
 </body>
 
 </html>
