@@ -300,7 +300,8 @@ sup {
   top: -0.5em;
 }
 .highlight-text {
-  color: #97a88a;
+  color: #96442e;
+  font-weight: bold;
 }
 .fade-text {
   color: #d3d3d3;
