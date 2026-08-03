@@ -7,6 +7,8 @@ var theme = {
    * Do not forget to remove dependency from src/js/vendor/ and recompile.
    */
   init: function () {
+    // Runs first: later components assume markup this page doesn't have and can throw
+    theme.headerOffset();
     theme.stickyHeader();
     theme.subMenu();
     theme.offCanvas();
@@ -188,6 +190,21 @@ var theme = {
       first_section.style.paddingTop = header_height + 'px';
       first_section.style.marginTop = '-' + header_height + 'px';
     }
+  },
+  /**
+   * Header Offset
+   * Publishes the sticky header's height as the --header-height custom property
+   * so anchor targets can offset themselves via scroll-margin-top
+   */
+  headerOffset: function () {
+    const header = document.querySelector('.sticky-top');
+    if (header == null) return;
+    const setHeaderOffset = () => {
+      document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+    };
+    setHeaderOffset();
+    window.addEventListener('load', setHeaderOffset);
+    window.addEventListener('resize', setHeaderOffset);
   },
   /**
    * Anchor Smooth Scroll

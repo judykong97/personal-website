@@ -13,35 +13,6 @@
   <!-- <link rel="shortcut icon" href="./assets/img/favicon.png"> -->
   <link rel="stylesheet" href="./assets/css/plugins.css">
   <link rel="stylesheet" href="./assets/css/style.css">
-  <style>
-    #about, #publications, #kong2024ability, #kong2022quantifying {
-      scroll-margin-top: var(--header-height, 150px);
-    }
-    .job-market-banner {
-      background-color: #eef2ea;
-      border-left: 4px solid #7b8b6f;
-      border-radius: 0.4rem;
-      padding: 1rem 1.25rem;
-      margin: 1.5rem 0;
-    }
-    .job-market-banner p {
-      margin-bottom: 0;
-    }
-    @media (max-width: 767.98px) {
-      #navMenu .btn {
-        display: block;
-        width: 100%;
-        margin: 0;
-        padding: 0.5rem 0;
-        background-color: transparent;
-        border-radius: 0;
-      }
-      .navigation h3 {
-        font-size: clamp(15px, 5.5vw, 24px) !important;
-        white-space: nowrap;
-      }
-    }
-  </style>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJ4CK2EEZH"></script>
   <script src="./assets/js/analytics.js"></script>
@@ -436,17 +407,6 @@
   </div>
   <script src="./assets/js/plugins.js"></script>
   <script src="./assets/js/theme.js"></script>
-  <script>
-    function setHeaderOffset() {
-      var header = document.querySelector('.sticky-top');
-      if (header) {
-        document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
-      }
-    }
-    setHeaderOffset();
-    window.addEventListener('load', setHeaderOffset);
-    window.addEventListener('resize', setHeaderOffset);
-  </script>
 </body>
 
 </html>

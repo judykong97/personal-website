@@ -37365,3 +37365,60 @@ footer.bg-dark.angled.lower-start:after,
 footer.bg-dark.angled.upper-start:before {
   border-left-color: #21262c !important;
 }
+
+/* ==========================================================================
+   Site customizations
+   ========================================================================== */
+
+/* Offset anchor targets so the sticky header doesn't cover them.
+   --header-height is measured at runtime in assets/js/theme.js */
+#about,
+#publications,
+#kong2024ability,
+#kong2022quantifying {
+  scroll-margin-top: var(--header-height, 150px);
+}
+
+/* Job market callout between the bio and publications */
+.job-market-banner {
+  background-color: #eef2ea;
+  border-left: 4px solid #7b8b6f;
+  border-radius: 0.4rem;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+.job-market-banner p {
+  margin-bottom: 0;
+}
+
+/* Mobile header: collapsed menu links stack one per row without pill boxes,
+   and the title shrinks to stay on a single line beside the toggle */
+@media (max-width: 767.98px) {
+  /* Drop the open menu over the page instead of pushing the content down.
+     The .sticky-top header is the positioned ancestor and already sits at
+     z-index 1020, so the panel paints above everything below it. */
+  #navMenu.collapse,
+  #navMenu.collapsing {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    /* .row > * contributes a gy-4 gutter margin that would gap the panel */
+    margin: 0;
+    padding: 0.25rem 0 0.75rem;
+    background-color: #fefefe;
+    border-bottom: 1px solid rgba(164, 174, 198, 0.2);
+  }
+  #navMenu .btn {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0.5rem 0;
+    background-color: transparent;
+    border-radius: 0;
+  }
+  .navigation h3 {
+    font-size: clamp(15px, 5.5vw, 24px) !important;
+    white-space: nowrap;
+  }
+}
