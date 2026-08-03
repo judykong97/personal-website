@@ -27,6 +27,20 @@
     .job-market-banner p {
       margin-bottom: 0;
     }
+    @media (max-width: 767.98px) {
+      #navMenu .btn {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0.5rem 0;
+        background-color: transparent;
+        border-radius: 0;
+      }
+      .navigation h3 {
+        font-size: clamp(15px, 5.5vw, 24px) !important;
+        white-space: nowrap;
+      }
+    }
   </style>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJ4CK2EEZH"></script>
@@ -39,13 +53,16 @@
   <div class="content-wrapper">
     <section class="wrapper bg-light wrapper-border sticky-top">
       <div class="container inner py-4">
-        <div class="row gx-lg-8 gx-xl-12 gy-4 gy-lg-0">
-          <div class="col-md-8 align-self-center text-center text-md-start navigation">
+        <div class="row gx-lg-8 gx-xl-12 gy-4 gy-lg-0 align-items-center">
+          <div class="col-md-8 align-self-center text-md-start navigation d-flex align-items-center justify-content-between">
             <a href="./index.html">
-              <h3 class="text-black fs-30 mb-0">Junhan "Judy" Kong 孔珺涵</h3>
+              <h3 class="text-black fs-30 mb-0">Junhan "Judy" Kong<span class="d-none d-md-inline"> 孔珺涵</span></h3>
             </a>
+            <button class="btn btn-sm btn-circle btn-soft-ash flex-shrink-0 ms-auto d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fa-solid fa-bars"></i>
+            </button>
           </div>
-          <div class="col-md-4 align-self-center text-center text-md-start navigation">
+          <div id="navMenu" class="col-md-4 collapse d-md-block align-self-center text-center text-md-start navigation">
             <a href="#" class="btn btn-sm btn-soft-ash rounded-pill btn-icon btn-icon-start mb-0 me-1 add-margin">About</a>
             <a href="#publications" class="btn btn-sm btn-soft-ash rounded-pill btn-icon btn-icon-end mb-0 add-margin">Publications</a>
           </div>

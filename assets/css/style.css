@@ -19927,7 +19927,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   word-spacing: 0.05rem;
-  overflow-x: hidden !important;
+  overflow-x: clip;
 }
 ::-moz-selection {
   background: rgba(63, 120, 224, 0.7);
