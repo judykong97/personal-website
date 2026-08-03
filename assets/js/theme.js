@@ -9,6 +9,7 @@ var theme = {
   init: function () {
     // Runs first: later components assume markup this page doesn't have and can throw
     theme.headerOffset();
+    theme.headerMenuCollapse();
     theme.stickyHeader();
     theme.subMenu();
     theme.offCanvas();
@@ -205,6 +206,23 @@ var theme = {
     setHeaderOffset();
     window.addEventListener('load', setHeaderOffset);
     window.addEventListener('resize', setHeaderOffset);
+  },
+  /**
+   * Header Menu Collapse
+   * Closes the collapsed header menu once one of its links is followed, so the
+   * overlay panel does not cover the section it just scrolled to.
+   * The .show check scopes this to mobile: on md+ the menu is laid out by
+   * d-md-block and never carries .show
+   */
+  headerMenuCollapse: function () {
+    const menu = document.querySelector('#navMenu');
+    if (menu == null) return;
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (!menu.classList.contains('show')) return;
+        bootstrap.Collapse.getOrCreateInstance(menu).hide();
+      });
+    });
   },
   /**
    * Anchor Smooth Scroll
