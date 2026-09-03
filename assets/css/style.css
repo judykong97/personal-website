@@ -37373,6 +37373,7 @@ footer.bg-dark.angled.upper-start:before {
 /* Offset anchor targets so the sticky header doesn't cover them.
    --header-height is measured at runtime in assets/js/theme.js */
 #about,
+#highlights,
 #publications,
 #kong2024ability,
 #kong2022quantifying {
@@ -37389,6 +37390,431 @@ footer.bg-dark.angled.upper-start:before {
 }
 .job-market-banner p {
   margin-bottom: 0;
+}
+
+/* Research highlights: three pillars joined by a connector spine.
+   An umbrella cell states the shared goal and brackets down into the three. */
+.rh-tree {
+  /* shared by the grid and by the bracket that has to line up with it */
+  --rh-gap: 1rem;
+  --rh-rule: rgba(123, 139, 111, 0.45);
+  --rh-stem: 18px;
+}
+/* A touch more room before the pillar figure than the default paragraph
+   spacing gives it. Widened here (not via margin-top on .rh-tree) because
+   adjacent margins collapse to the larger one rather than adding together. */
+.research-highlights > p:last-of-type {
+  margin-bottom: 1.5rem;
+}
+.rh-umbrella {
+  background-color: #eef2ea;
+  border: 1px solid rgba(123, 139, 111, 0.35);
+  border-radius: 0.4rem;
+  padding: 14px 20px;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #343f52;
+}
+/* Bracket: a stem down from the umbrella, a rail across, then a drop into
+   each pillar (.rh-pillar::before). The rail stops at the outer column
+   centres, which sit (100% - 2 gaps) / 6 in from each edge. */
+.rh-branch {
+  position: relative;
+  height: calc(var(--rh-stem) * 2);
+}
+.rh-branch::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -1px;
+  width: 2px;
+  height: var(--rh-stem);
+  background-color: var(--rh-rule);
+}
+.rh-branch::after {
+  content: "";
+  position: absolute;
+  top: var(--rh-stem);
+  left: calc((100% - 2 * var(--rh-gap)) / 6);
+  right: calc((100% - 2 * var(--rh-gap)) / 6);
+  height: 2px;
+  background-color: var(--rh-rule);
+}
+.rh-flow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Without this, grid's default "stretch" makes every pillar match the
+     tallest row member, so opening one's Relevant Work accordion visually
+     inflates the other two (empty space) instead of expanding on its own */
+  align-items: start;
+  gap: var(--rh-gap);
+}
+.rh-pillar::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--rh-stem) * -1);
+  left: 50%;
+  margin-left: -1px;
+  width: 2px;
+  height: var(--rh-stem);
+  background-color: var(--rh-rule);
+  /* must match .rh-pillar's own transform transition exactly, or this
+     pseudo-element's counter-transform (below, on hover) snaps instantly
+     while the card's lift eases in, visibly desyncing for that 0.2s window */
+  transition: transform 0.2s ease-in-out;
+}
+.rh-pillar {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid rgba(164, 174, 198, 0.2);
+  border-radius: 0.4rem;
+  padding: 20px 16px 16px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.rh-pillar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1.5rem rgba(30, 34, 40, 0.06);
+}
+/* ::before (the connector drop from the umbrella) would otherwise ride
+   along with the card's lift, since a transform moves an element's
+   pseudo-elements with it; this cancels that so the line stays put */
+.rh-pillar:hover::before {
+  transform: translateY(3px);
+}
+.rh-marker {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background-color: #eef2ea;
+  box-shadow: 0 0 0 4px #fff, 0 0 0 5px rgba(123, 139, 111, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #567a3b;
+  font-size: 1.1rem;
+}
+.rh-pillar h6 {
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+}
+.rh-pillar p {
+  margin-bottom: 0;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+/* Each pillar's guiding question, styled as a speech bubble with a small
+   tail pointing up at the h6 title, as if the pillar is asking it */
+.rh-pillar .rh-question {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* height is synced across the three bubbles by theme.equalizeRhQuestions(),
+     since the three questions are different lengths and wrap to different
+     line counts otherwise */
+  box-sizing: border-box;
+  margin: 0.6rem 0 1rem;
+  padding: 0.5rem 0.75rem;
+  background-color: #eef2ea;
+  border: 1px solid rgba(123, 139, 111, 0.35);
+  border-radius: 0.7rem;
+  font-style: italic;
+  font-size: 0.7rem;
+  line-height: 1.45;
+  color: #46523a;
+}
+.rh-pillar .rh-question::before {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 20px;
+  width: 11px;
+  height: 11px;
+  background-color: #eef2ea;
+  border-right: 1px solid rgba(123, 139, 111, 0.35);
+  border-bottom: 1px solid rgba(123, 139, 111, 0.35);
+  transform: rotate(45deg);
+}
+/* Venue strip doubles as the disclosure control for the works beneath it */
+.rh-venues {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.75rem 0 0;
+  border: 0;
+  border-top: 1px solid rgba(164, 174, 198, 0.2);
+  background: none;
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #97a88a;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+.rh-venues:hover,
+.rh-venues:focus-visible {
+  color: #567a3b;
+}
+.rh-venues i {
+  font-size: 0.6em;
+  transition: transform 0.2s ease-in-out;
+}
+.rh-venues[aria-expanded="true"] i {
+  transform: rotate(180deg);
+}
+.rh-worklist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+.rh-worklist li {
+  position: relative;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+/* The title is plain text: a merged entry like "Quantifying Touch (ASSETS
+   '22, '21)" is really two different papers, so only the individual venue
+   below is a link/hover target, never the shared title. */
+.rh-work-title {
+  font-weight: 600;
+  color: #343f52;
+}
+.rh-work-venue {
+  font-weight: 600;
+  color: #97a88a;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+.rh-work-venue:hover,
+.rh-work-venue:focus-visible {
+  color: #567a3b;
+}
+/* This component supplies its own focus indicator since the sitewide
+   `a:focus { outline: 0; }` rule (assets/css/style.css) leaves link focus
+   invisible otherwise. */
+.rh-work-venue:focus-visible {
+  outline: 2px solid #567a3b;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+/* Small inline cue next to the specific awarded venue so it doesn't require
+   a hover to discover; the full label lives in .rh-hc-award on its card */
+.rh-work-award-icon {
+  font-size: 0.65rem;
+  color: #96442e;
+}
+/* Preview card, revealed on hover or keyboard focus of ITS OWN venue link
+   (matched by data-slot, since a li can hold up to two). Positioned off the
+   li rather than the venue link, since the link is often just a couple of
+   characters ("'21") and can't center a 230px card under itself. Kept
+   pointer-interactive so it can be moved onto rather than vanishing
+   (WCAG 1.4.13). */
+.rh-hovercard {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  z-index: 20;
+  width: 230px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid rgba(164, 174, 198, 0.2);
+  border-radius: 0.4rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(30, 34, 40, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+}
+/* Pointer reveal only where hovering exists; on touch a tap should just follow
+   the DOI rather than flashing a card. Keyboard focus always reveals. */
+@media (hover: hover) {
+  .rh-work-venue[data-slot="1"]:hover ~ .rh-hovercard[data-slot="1"],
+  .rh-work-venue[data-slot="2"]:hover ~ .rh-hovercard[data-slot="2"] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+.rh-work-venue[data-slot="1"]:focus-visible ~ .rh-hovercard[data-slot="1"],
+.rh-work-venue[data-slot="2"]:focus-visible ~ .rh-hovercard[data-slot="2"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+/* Escape-dismissed (see theme.workPreviewDismiss); outranks the reveal rules
+   above by source order at equal specificity */
+.rh-work-venue[data-slot="1"].rh-dismissed ~ .rh-hovercard[data-slot="1"],
+.rh-work-venue[data-slot="2"].rh-dismissed ~ .rh-hovercard[data-slot="2"] {
+  opacity: 0;
+  visibility: hidden;
+}
+.rh-hovercard img {
+  display: block;
+  width: 100%;
+  border-radius: 0.2rem;
+  margin-bottom: 8px;
+}
+.rh-hc-title {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #343f52;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.rh-hc-authors {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.68rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #60697b;
+}
+.rh-hc-venue {
+  display: block;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(164, 174, 198, 0.2);
+  font-size: 0.66rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #97a88a;
+}
+.rh-hc-award {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #96442e;
+}
+.rh-hc-award i {
+  margin-right: 3px;
+}
+/* Lift the hovered pillar above its siblings so the card is not painted over */
+.rh-pillar:hover,
+.rh-pillar:focus-within {
+  z-index: 5;
+}
+
+@media (max-width: 767.98px) {
+  /* Stacked: drop the cross rail and let the per-pillar drops, sized to the
+     row gap, chain the umbrella and the three cards into one vertical line */
+  .rh-tree {
+    --rh-gap: 1.25rem;
+    --rh-stem: 1.25rem;
+  }
+  .rh-flow {
+    grid-template-columns: 1fr;
+  }
+  .rh-branch::after {
+    display: none;
+  }
+}
+
+/* Tablet header: the md container leaves roughly 280px beside the three nav
+   pills, so the title is eased down (and 孔珺涵 held back until lg, where the
+   container is wide enough) to keep it on one line instead of wrapping and
+   doubling the header height. */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .navigation h3 {
+    font-size: 1.2rem !important;
+    white-space: nowrap;
+  }
+}
+
+/* Publications filter bar: mode switcher (selected / by date / by topic)
+   plus the topic chip row, shown only in "by topic" mode. See
+   theme.pubFilters() for the interaction. */
+.pub-heading-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 0.85rem;
+  row-gap: 0.25rem;
+}
+.pub-mode-switcher {
+  margin: 0;
+  font-size: 0.85rem;
+}
+.pub-mode-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 0.85rem;
+  color: #97a88a;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+.pub-mode-btn:hover,
+.pub-mode-btn:focus-visible {
+  color: #567a3b;
+}
+.pub-mode-btn.active {
+  color: #343f52;
+  font-weight: 700;
+}
+.pub-mode-sep {
+  color: rgba(164, 174, 198, 0.6);
+  margin: 0 0.4rem;
+}
+.pub-topic-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1.5rem;
+}
+/* Author-origin `display: flex` above would otherwise beat the UA
+   stylesheet's `[hidden] { display: none }` at equal specificity */
+.pub-topic-bar[hidden] {
+  display: none;
+}
+.pub-topic-label {
+  font-size: 0.8rem;
+  color: #60697b;
+  margin-right: 0.2rem;
+}
+.pub-topic-chip {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 1000px;
+  border: 1px solid rgba(123, 139, 111, 0.35);
+  background-color: #fff;
+  color: #567a3b;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+.pub-topic-chip:hover,
+.pub-topic-chip:focus-visible {
+  background-color: #eef2ea;
+}
+.pub-topic-chip.active {
+  background-color: #7b8b6f;
+  border-color: #7b8b6f;
+  color: #fff;
+}
+/* theme.pubFilters() reorders cards by moving the actual DOM nodes (so text
+   selection, tab order, and screen readers stay in sync with what's on
+   screen), so .pub-list only needs the spacing and the hidden-card rule */
+.pub-list {
+  margin-bottom: 3rem;
+}
+.pub-list .blog[hidden] {
+  display: none;
 }
 
 /* Mobile header: collapsed menu links stack one per row without pill boxes,

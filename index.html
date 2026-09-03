@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Website layout inspired by anhongguo.com -->
+<!-- Adapted from the Bootstrap template Sandbox and partly created using Claude Code -->
+<!-- Website layout inspired by anhongguo.com and jiayuanm.com -->
 
 <head>
   <meta charset="utf-8">
@@ -25,16 +26,17 @@
     <section class="wrapper bg-light wrapper-border sticky-top">
       <div class="container inner py-4">
         <div class="row gx-lg-8 gx-xl-12 gy-4 gy-lg-0 align-items-center">
-          <div class="col-md-8 align-self-center text-md-start navigation d-flex align-items-center justify-content-between">
+          <div class="col-md align-self-center text-md-start navigation d-flex align-items-center justify-content-between">
             <a href="./index.html">
-              <h3 class="text-black fs-30 mb-0">Junhan "Judy" Kong<span class="d-none d-md-inline"> 孔珺涵</span></h3>
+              <h3 class="text-black fs-30 mb-0">Junhan "Judy" Kong<span class="d-none d-lg-inline"> 孔珺涵</span></h3>
             </a>
             <button class="btn btn-sm btn-circle btn-soft-ash flex-shrink-0 ms-auto d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
               <i class="fa-solid fa-bars"></i>
             </button>
           </div>
-          <div id="navMenu" class="col-md-4 collapse d-md-block align-self-center text-center text-md-start navigation">
+          <div id="navMenu" class="col-md-auto collapse d-md-block align-self-center text-center text-md-end navigation">
             <a href="#" class="btn btn-sm btn-soft-ash rounded-pill btn-icon btn-icon-start mb-0 me-1 add-margin">About</a>
+            <a href="#highlights" class="btn btn-sm btn-soft-ash rounded-pill btn-icon btn-icon-start mb-0 me-1 add-margin">Research</a>
             <a href="#publications" class="btn btn-sm btn-soft-ash rounded-pill btn-icon btn-icon-end mb-0 add-margin">Publications</a>
           </div>
         </div>
@@ -57,11 +59,9 @@
                 <figure class="rounded py-md-2"><img src="./assets/img/me.jpg" alt=""/></figure>
               </div>
               <div class="col-md-8 add-padding">
-                <p>Junhan "Judy" Kong is a final-year Ph.D. candidate in the <a href="http://ischool.uw.edu/">Information School</a> at the <a href="http://www.washington.edu/">University of Washington</a>, advised by Prof. <a href="http://faculty.washington.edu/wobbrock/">Jacob O. Wobbrock</a>. Prior to that, she received her Bachelor's and Master's degrees in <a href="https://www.cs.cmu.edu/">Computer Science</a> with an additional major in <a href="https://www.hcii.cmu.edu/">Human-Computer Interaction</a> and minors in <a href="https://www.cmu.edu/dietrich/statistics-datascience/index.html">Statistics</a> and <a href="https://www.ml.cmu.edu/">Machine Learning</a> at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>, where she worked with Prof. <a href="https://www.cs.cmu.edu/~jbigham/">Jeffrey P. Bigham</a> and Prof. <a href="https://guoanhong.com/">Anhong Guo</a>. She has also worked at <a href="https://research.adobe.com/">Adobe Research</a> and <a href="https://about.meta.com/realitylabs/">Meta Reality Labs</a> as a research scientist intern.</p>
+                <p>Junhan "Judy" Kong is a final-year Ph.D. candidate in the <a href="http://ischool.uw.edu/">Information School</a> at the <a href="http://www.washington.edu/">University of Washington</a>, advised by Prof. <a href="http://faculty.washington.edu/wobbrock/">Jacob O. Wobbrock</a> in the <a href="https://depts.washington.edu/acelab/">ACE Lab</a>, the <a href="https://dub.washington.edu/">DUB Group</a>, and the <a href="https://create.uw.edu/">CREATE Center</a>. Prior to that, she received her Bachelor's and Master's degrees in <a href="https://www.cs.cmu.edu/">Computer Science</a> with an additional major in <a href="https://www.hcii.cmu.edu/">Human-Computer Interaction</a> and minors in <a href="https://www.cmu.edu/dietrich/statistics-datascience/index.html">Statistics</a> and <a href="https://www.ml.cmu.edu/">Machine Learning</a> at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>, where she worked with Prof. <a href="https://www.cs.cmu.edu/~jbigham/">Jeffrey P. Bigham</a> and Prof. <a href="https://guoanhong.com/">Anhong Guo</a>. She has also worked at <a href="https://research.adobe.com/">Adobe Research</a> and <a href="https://about.meta.com/realitylabs/">Meta Reality Labs</a> as a research scientist intern.</p>
 
                 <p>Her research is in <b>human-computer interaction (HCI)</b> with a focus on <b>accessibility</b>, <b>interaction techniques</b>, <b>adaptive interfaces</b>, <b>AR/VR</b>, and <b>human-centered AI</b>. Her work has been published at top-tier conferences including CHI, UIST, ASSETS, MobileHCI, and SUI, and has received the <a href="#kong2024ability">Best Paper Award</a> from <a href="https://mobilehci.acm.org/">MobileHCI</a> and a <a href="#kong2022quantifying">Best Paper Nomination</a> from <a href="https://assets26.sigaccess.org/">ASSETS</a>.</p>
-
-                <p>Her research is guided by a vision of computing systems that recognize and serve human diversity: technologies that <b><i>understand</i></b> and <b><i>adapt to</i></b> the varying situated abilities of their users, and infrastructures that empower designers and developers to create <b><i>accessible</i></b> and <b><i>personalized</i></b> interfaces.</p>
 
                 <!-- <p>I'm broadly interested in <b>human-computer interaction</b> and <b>accessibility</b>. My work seeks to enable computer technologies to understand the varying abilities of their users, and to design, implement, and evaluate tools to make technologies accessible and personalized by adapting to these abilities. Specifically, my work focuses on:
                   <ul>
@@ -77,14 +77,193 @@
             </div>
 
             <!-- ********************************* -->
+            <!-- ***** Research Highlights ******* -->
+            <!-- ********************************* -->
+
+            <div id="highlights" class="row py-8 py-md-4">
+              <h2>Research Highlights</h2>
+            </div>
+
+            <div class="research-highlights">
+
+              <p>My research is guided by a vision of computing systems that recognize and serve human diversity: user needs vary across abilities, contexts, and situations, and even at different times of day for the same person&mdash;there isn't a one-size-fits-all solution that simply works for everyone. To address the <b>heterogeneity of human abilities and needs</b>, I create technologies that <i>understand</i> and <i>adapt to</i> the varying abilities of their users, and infrastructures that empower designers and developers to create <i>accessible</i> and <i>personalized</i> interfaces.</p>
+
+              <!-- Rather than treating accessibility as a fixed set of accommodations, I study abilities as measurable, situational, and dynamic. -->
+
+              <p>My research approaches this vision through three pillars of work: (1) <b>Modeling Abilities</b>: quantitative characterization of human abilities through input behavior and sensor data, (2) <b>Adapting Interfaces</b>: human-AI collaboration on interface adaptations based on these abilities, and (3) <b>Empowering Creators</b>: design and development support for ability-based interface creation.</p>
+
+              <div class="rh-tree">
+                <!-- <div class="rh-umbrella">Intelligent, Accessible, and Personalized Interfaces</div> -->
+                <div class="rh-umbrella">Towards Accessibility and Personalization: Ability-Based Human-AI Systems</div>
+                <div class="rh-branch" aria-hidden="true"></div>
+
+                <div class="rh-flow">
+                  <div class="rh-pillar">
+                    <div class="rh-marker"><i class="fa-solid fa-chart-simple"></i></div>
+                    <h6>Modeling Abilities</h6>
+                    <p class="rh-question">“How can we turn interaction behavior into measurable, actionable representations of users' abilities?”</p>
+                    <p>Quantitative characterization of human abilities through input behavior and sensor data</p>
+                    <button class="rh-venues" type="button" data-bs-toggle="collapse" data-bs-target="#rhWorks1" aria-expanded="false" aria-controls="rhWorks1">
+                      <span>Relevant Work</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <ul id="rhWorks1" class="rh-worklist collapse">
+                      <li>
+                        <span class="rh-work-title">Quantifying Touch</span>
+                        (<a class="rh-work-venue" data-slot="1" href="https://dl.acm.org/doi/10.1145/3517428.3544804">ASSETS &rsquo;22</a> <i class="fa-solid fa-medal rh-work-award-icon" aria-hidden="true" title="Best Paper Nominee"></i>, <a class="rh-work-venue" data-slot="2" href="https://dl.acm.org/doi/abs/10.1145/3441852.3476559">&rsquo;21</a>)
+                        <span class="rh-hovercard" data-slot="1" role="tooltip">
+                          <img src="./assets/img/thumbnail/quantifyingtouch.jpg" alt="" />
+                          <span class="rh-hc-title">Quantifying Touch: New Metrics for Characterizing What Happens <em>During</em> a Touch</span>
+                          <span class="rh-hc-authors"><b>Junhan Kong</b>, Mingyuan Zhong, James Fogarty, Jacob O. Wobbrock</span>
+                          <span class="rh-hc-venue">ASSETS 2022</span>
+                          <span class="rh-hc-award"><i class="fa-solid fa-medal" aria-hidden="true"></i> Best Paper Nominee</span>
+                        </span>
+                        <span class="rh-hovercard" data-slot="2" role="tooltip">
+                          <img src="./assets/img/thumbnail/newmetrics.png" alt="" />
+                          <span class="rh-hc-title">New Metrics for Understanding Touch by People with and without Limited Fine Motor Function</span>
+                          <span class="rh-hc-authors"><b>Junhan Kong</b>, Mingyuan Zhong, James Fogarty, Jacob O. Wobbrock</span>
+                          <span class="rh-hc-venue">ASSETS 2021 Poster</span>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="rh-work-title">Quantifying 3D Pointing</span>
+                        (<a class="rh-work-venue" data-slot="1" href="./assets/files/kong2026quantifying.pdf">ICMI &rsquo;26</a>)
+                        <span class="rh-hovercard" data-slot="1" role="tooltip">
+                          <img src="./assets/img/thumbnail/kong2026quantifying.png" alt="" />
+                          <span class="rh-hc-title">Quantifying 3D Pointing: Characterizing What Happens During Pointing Selection in Virtual Reality</span>
+                          <span class="rh-hc-authors"><b>Junhan Kong</b>, Jacqui Fashimpaur, Michael J. Proulx, Hemant Bhaskar Surale, Jacob O. Wobbrock, Amy Karlson</span>
+                          <span class="rh-hc-venue">ICMI 2026 (To Appear)</span>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="rh-work-title">Touchscreens in Motion</span>
+                        (<a class="rh-work-venue" data-slot="1" href="https://doi.org/10.1145/3746059.3747683">UIST &rsquo;25</a>)
+                        <span class="rh-hovercard" data-slot="1" role="tooltip">
+                          <img src="./assets/img/thumbnail/shen2025touchscreens.png" alt="" />
+                          <span class="rh-hc-title">Touchscreens in Motion: Quantifying the Impact of Cognitive Load on Distracted Drivers</span>
+                          <span class="rh-hc-authors">Xiyuan Shen*, Seokhyun Hwang*, <b>Junhan Kong</b>, Alexandre L. S. Filipowicz, Andrew Best, Jean M. Costa, Scott Carter, James Fogarty, Jacob O. Wobbrock</span>
+                          <span class="rh-hc-venue">UIST 2025</span>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="rh-pillar">
+                    <div class="rh-marker"><i class="fa-solid fa-sliders"></i></div>
+                    <h6>Adapting Interfaces</h6>
+                    <p class="rh-question">“How should adaptive interfaces leverage intelligent capabilities while retaining human agency?”</p>
+                    <p>Human-AI collaboration on interface adaptations based on users' abilities</p>
+                    <button class="rh-venues" type="button" data-bs-toggle="collapse" data-bs-target="#rhWorks2" aria-expanded="false" aria-controls="rhWorks2">
+                      <span>Relevant Work</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <ul id="rhWorks2" class="rh-worklist collapse">
+                      <li>
+                        <span class="rh-work-title">Mobile Reading while Walking</span>
+                        (<a class="rh-work-venue" data-slot="1" href="https://dl.acm.org/doi/10.1145/3706598.3713367">CHI &rsquo;25</a>, <a class="rh-work-venue" data-slot="2" href="https://dl.acm.org/doi/10.1145/3586182.3616666">UIST &rsquo;23</a>)
+                        <span class="rh-hovercard" data-slot="1" role="tooltip">
+                          <img src="./assets/img/thumbnail/kong2025supporting.png" alt="" />
+                          <span class="rh-hc-title">Supporting Mobile Reading While Walking with Automatic and Customized Font Size Adaptations</span>
+                          <span class="rh-hc-authors"><b>Junhan Kong</b>, Jacob O. Wobbrock, Tianyuan Cai, Zoya Bylinskii</span>
+                          <span class="rh-hc-venue">CHI 2025</span>
+                        </span>
+                        <span class="rh-hovercard" data-slot="2" role="tooltip">
+                          <img src="./assets/img/thumbnail/situationalreadingposter.jpg" alt="" />
+                          <span class="rh-hc-title">Improving Mobile Reading Experiences While Walking Through Automatic Adaptations and Prompted Customization</span>
+                          <span class="rh-hc-authors"><b>Junhan Kong</b>, Tianyuan Cai, Zoya Bylinskii</span>
+                          <span class="rh-hc-venue">UIST 2023 Poster</span>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="rh-work-title">Personalized Keyboard</span>
+                        (<a class="rh-work-venue" data-slot="1" href="#">Manuscript</a>)
+                        <span class="rh-hovercard" data-slot="1" role="tooltip">
+                          <span class="rh-hc-title">Personalized Keyboard</span>
+                          <!-- <span class="rh-hc-authors"><b>Junhan Kong</b>, et al.</span> -->
+                          <!-- <span class="rh-hc-venue">arXiv preprint &middot; link coming soon</span> -->
+                          <span class="rh-hc-venue">Available upon request</span>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="rh-work-title">Personalized Gestures</span>
+                        (<a class="rh-work-venue" data-slot="1" href="https://dl.acm.org/doi/abs/10.1145/3597638.3608430">ASSETS &rsquo;23</a>)
+                        <span class="rh-hovercard" data-slot="1" role="tooltip">
+                          <img src="./assets/img/thumbnail/accessiblegestures.jpg" alt="" />
+                          <span class="rh-hc-title">How Do People with Limited Movement Personalize Upper-Body Gestures? Considerations for the Design of Personalized and Accessible Gesture Interfaces</span>
+                          <span class="rh-hc-authors">Momona Yamagami, Alexandra A. Portnova-Fahreeva, <b>Junhan Kong</b>, Jacob O. Wobbrock, Jennifer Mankoff</span>
+                          <span class="rh-hc-venue">ASSETS 2023</span>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="rh-pillar">
+                    <div class="rh-marker"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <h6>Empowering Creators</h6>
+                    <p class="rh-question">“How can we systematically lower barriers for creating accessible interfaces?”</p>
+                    <p>Design and development support for ability-based interface creation</p>
+                    <button class="rh-venues" type="button" data-bs-toggle="collapse" data-bs-target="#rhWorks3" aria-expanded="false" aria-controls="rhWorks3">
+                      <span>Relevant Work</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <ul id="rhWorks3" class="rh-worklist collapse">
+                      <li>
+                        <span class="rh-work-title">ABD-MT</span>
+                        (<a class="rh-work-venue" data-slot="1" href="https://dl.acm.org/doi/10.1145/3676524">MobileHCI &rsquo;24</a> <i class="fa-solid fa-trophy rh-work-award-icon" aria-hidden="true" title="Best Paper Award"></i>)
+                        <span class="rh-hovercard" data-slot="1" role="tooltip">
+                          <img src="./assets/img/thumbnail/abdmt.png" alt="" />
+                          <span class="rh-hc-title">The Ability-Based Design Mobile Toolkit (ABD-MT): Developer Support for Runtime Interface Adaptation Based on Users&rsquo; Abilities</span>
+                          <span class="rh-hc-authors"><b>Junhan Kong</b>, Mingyuan Zhong, James Fogarty, Jacob O. Wobbrock</span>
+                          <span class="rh-hc-venue">MobileHCI 2024</span>
+                          <span class="rh-hc-award"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Best Paper Award</span>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="rh-work-title">Ability Heuristics</span>
+                        (<a class="rh-work-venue" data-slot="1" href="https://doi.org/10.1145/3772318.3791504">CHI &rsquo;26</a>)
+                        <span class="rh-hovercard" data-slot="1" role="tooltip">
+                          <img src="./assets/img/thumbnail/mitchell2026ability.png" alt="" />
+                          <span class="rh-hc-title">Ability Heuristics for Conducting Accessibility Inspections</span>
+                          <span class="rh-hc-authors">Claire L. Mitchell, <b>Junhan Kong</b>, Jesse J. Martinez, Shaun K. Kane, Amy J. Ko, Alexis Hiniker, Jacob O. Wobbrock</span>
+                          <span class="rh-hc-venue">CHI 2026</span>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="rh-work-title">Design Tool</span>
+                        (<a class="rh-work-venue" data-slot="1" href="#">Manuscript</a>)
+                        <span class="rh-hovercard" data-slot="1" role="tooltip">
+                          <span class="rh-hc-title">Design Tool</span>
+                          <!-- <span class="rh-hc-authors"><b>Junhan Kong</b>, et al.</span> -->
+                          <!-- <span class="rh-hc-venue">arXiv preprint &middot; link coming soon</span> -->
+                          <span class="rh-hc-venue">Available upon request</span>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ********************************* -->
             <!-- ********** Publications ********* -->
             <!-- ********************************* -->
 
             <div id="publications" class="row py-8 py-md-4">
-              <h2>Publications</h2>
+              <div class="pub-heading-row">
+                <h2 class="mb-0">Publications</h2>
+                <p class="pub-mode-switcher mb-0">
+                  (<button type="button" class="pub-mode-btn" data-mode="selected" aria-pressed="true">show selected</button><span class="pub-mode-sep">/</span><button type="button" class="pub-mode-btn" data-mode="date" aria-pressed="false">show all by date</button><span class="pub-mode-sep">/</span><button type="button" class="pub-mode-btn" data-mode="topic" aria-pressed="false">show all by topic</button>)
+                </p>
+              </div>
+              <div id="pubTopicBar" class="pub-topic-bar" hidden>
+                <span class="pub-topic-label">Topics:</span>
+                <button type="button" class="pub-topic-chip" data-topic="accessibility" aria-pressed="false">Accessibility</button>
+                <button type="button" class="pub-topic-chip" data-topic="human-performance-modeling" aria-pressed="false">Human Performance Modeling</button>
+                <button type="button" class="pub-topic-chip" data-topic="input-interaction" aria-pressed="false">Input and Interaction Techniques</button>
+                <button type="button" class="pub-topic-chip" data-topic="adaptive-interfaces" aria-pressed="false">Adaptive Interfaces</button>
+                <button type="button" class="pub-topic-chip" data-topic="situational-impairments" aria-pressed="false">Situational Impairments</button>
+                <button type="button" class="pub-topic-chip" data-topic="ar-vr" aria-pressed="false">AR/VR</button>
+              </div>
             </div>
 
-            <!-- <div class="blog classic-view py-md-2">
+            <div id="pubList" class="pub-list">
+
+            <div class="blog classic-view py-md-2" data-date-order="1" data-topics="input-interaction ar-vr human-performance-modeling">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -98,9 +277,9 @@
                   </div>
                 </div>
               </div>
-            </div> -->
+            </div>
 
-            <div class="blog classic-view py-md-2">
+            <div class="blog classic-view py-md-2" data-date-order="2" data-selected-order="4" data-topics="accessibility">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -116,7 +295,7 @@
               </div>
             </div>
 
-            <div class="blog classic-view py-md-2">
+            <div class="blog classic-view py-md-2" data-date-order="3" data-selected-order="5" data-topics="situational-impairments human-performance-modeling input-interaction">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -132,7 +311,7 @@
               </div>
             </div>
 
-            <div class="blog classic-view py-md-2">
+            <div class="blog classic-view py-md-2" data-date-order="4" data-selected-order="3" data-topics="situational-impairments adaptive-interfaces accessibility">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -148,7 +327,7 @@
               </div>
             </div>
 
-            <div id="kong2024ability" class="blog classic-view py-md-2">
+            <div id="kong2024ability" class="blog classic-view py-md-2" data-date-order="5" data-selected-order="1" data-topics="adaptive-interfaces accessibility">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -164,7 +343,7 @@
               </div>
             </div>
 
-            <div class="blog classic-view py-md-2">
+            <div class="blog classic-view py-md-2" data-date-order="6" data-topics="accessibility input-interaction">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -180,7 +359,7 @@
               </div>
             </div>
 
-            <div class="blog classic-view py-md-2">
+            <div class="blog classic-view py-md-2" data-date-order="7" data-topics="situational-impairments adaptive-interfaces">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -197,7 +376,7 @@
               </div>
             </div>
 
-            <div class="blog classic-view py-md-2">
+            <div class="blog classic-view py-md-2" data-date-order="8" data-topics="accessibility input-interaction">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -213,7 +392,7 @@
               </div>
             </div>
 
-            <div id="kong2022quantifying" class="blog classic-view py-md-2">
+            <div id="kong2022quantifying" class="blog classic-view py-md-2" data-date-order="9" data-selected-order="2" data-topics="human-performance-modeling input-interaction accessibility">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -230,7 +409,7 @@
               </div>
             </div>
 
-            <div class="blog classic-view py-md-2">
+            <div class="blog classic-view py-md-2" data-date-order="10" data-topics="ar-vr input-interaction">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -246,7 +425,7 @@
               </div>
             </div>
 
-            <div class="blog classic-view py-md-2">
+            <div class="blog classic-view py-md-2" data-date-order="11" data-topics="human-performance-modeling accessibility input-interaction">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -262,7 +441,7 @@
               </div>
             </div>
 
-            <div class="blog classic-view py-md-2">
+            <div class="blog classic-view py-md-2" data-date-order="12" data-topics="accessibility ar-vr">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -278,7 +457,7 @@
               </div>
             </div>
 
-            <div class="blog classic-view py-md-2">
+            <div class="blog classic-view py-md-2" data-date-order="13" data-topics="accessibility">
               <div class="card card-body add-margin">
                 <div class="row">
                   <div class="col-md-3 py-md-2 add-padding">
@@ -292,6 +471,8 @@
                   </div>
                 </div>
               </div>
+            </div>
+
             </div>
 
             <!-- <div class="blog classic-view py-md-4">
@@ -319,8 +500,8 @@
             <div class="widget">
               <p class="p-small"><b>Junhan "Judy" Kong</b></p>
               <p class="p-small">PhD Candidate</p>
-              <p class="p-small"><a href="http://ischool.uw.edu/">Information School</a></p>
-              <p class="p-small"><a href="http://www.washington.edu/">University of Washington</a></p>
+              <p class="p-small"><a href="https://ischool.uw.edu/">Information School</a></p>
+              <p class="p-small"><a href="https://www.washington.edu/">University of Washington</a></p>
             </div>
 
             <div class="widget">
@@ -333,6 +514,7 @@
 
             <div class="widget">
               <h4 class="widget-title mb-3">Attending</h4>
+              <p class="p-small"><b>UIST 2026 (Detroit, MI)</b>
               <p class="p-small fade-text"><b>ASSETS 2025 (Denver, CO)</b>
               <p class="p-small fade-text"><b>CHI 2025 (Yokohama, Japan)</b>
               <!-- <p class="p-small fade-text"><b>MobileHCI 2024 (Melbourne, Australia)</b>

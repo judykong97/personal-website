@@ -9,7 +9,11 @@ var theme = {
   init: function () {
     // Runs first: later components assume markup this page doesn't have and can throw
     theme.headerOffset();
+    theme.equalizeRhQuestions();
+    theme.equalizePillarHeights();
     theme.headerMenuCollapse();
+    theme.workPreviewDismiss();
+    theme.pubFilters();
     theme.stickyHeader();
     theme.subMenu();
     theme.offCanvas();
@@ -208,6 +212,57 @@ var theme = {
     window.addEventListener('resize', setHeaderOffset);
   },
   /**
+   * Research Highlights Question Bubbles
+   * The three pillar "question" bubbles hold different-length text and wrap
+   * to different numbers of lines, so their heights are measured and synced
+   * to the tallest one; .rh-question's flex centering then keeps each
+   * question centered within that shared height.
+   */
+  equalizeRhQuestions: function () {
+    const bubbles = document.querySelectorAll('.rh-question');
+    if (bubbles.length === 0) return;
+    const sync = () => {
+      bubbles.forEach(bubble => { bubble.style.minHeight = ''; });
+      const tallest = Math.max(...Array.from(bubbles).map(bubble => bubble.offsetHeight));
+      bubbles.forEach(bubble => { bubble.style.minHeight = tallest + 'px'; });
+    };
+    sync();
+    window.addEventListener('load', sync);
+    window.addEventListener('resize', sync);
+  },
+  /**
+   * Research Highlights Pillar Height Sync
+   * Each pillar's Relevant Work list opens independently via its own
+   * collapse target, and that stays true here -- clicking one never touches
+   * another's open/closed state. But whenever more than one is expanded at
+   * once, their cards should line up rather than show jagged edges, so this
+   * resyncs height across whichever pillars are CURRENTLY expanded only;
+   * collapsed siblings are left at their own natural height, which is what
+   * keeps a single expansion from inflating the other two.
+   */
+  equalizePillarHeights: function () {
+    const pillars = document.querySelectorAll('.rh-pillar');
+    const worklists = document.querySelectorAll('.rh-worklist');
+    if (pillars.length === 0 || worklists.length === 0) return;
+
+    const sync = () => {
+      pillars.forEach(pillar => { pillar.style.minHeight = ''; });
+      const expanded = Array.from(pillars).filter(pillar => {
+        const list = pillar.querySelector('.rh-worklist');
+        return list != null && list.classList.contains('show');
+      });
+      if (expanded.length < 2) return;
+      const tallest = Math.max(...expanded.map(pillar => pillar.offsetHeight));
+      expanded.forEach(pillar => { pillar.style.minHeight = tallest + 'px'; });
+    };
+
+    worklists.forEach(list => {
+      list.addEventListener('shown.bs.collapse', sync);
+      list.addEventListener('hidden.bs.collapse', sync);
+    });
+    window.addEventListener('resize', sync);
+  },
+  /**
    * Header Menu Collapse
    * Closes the collapsed header menu once one of its links is followed, so the
    * overlay panel does not cover the section it just scrolled to.
@@ -223,6 +278,108 @@ var theme = {
         bootstrap.Collapse.getOrCreateInstance(menu).hide();
       });
     });
+  },
+  /**
+   * Work Preview Dismiss
+   * Lets Escape close a research-highlight preview card while it is showing,
+   * which WCAG 1.4.13 (Content on Hover or Focus) requires. Focus is left
+   * where it is; the dismissed state clears once the pointer or focus moves
+   * away, so the card can be summoned again.
+   */
+  workPreviewDismiss: function () {
+    const works = document.querySelectorAll('.rh-work-venue');
+    if (works.length === 0) return;
+    works.forEach(link => {
+      const clear = () => link.classList.remove('rh-dismissed');
+      link.addEventListener('mouseleave', clear);
+      link.addEventListener('blur', clear);
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      works.forEach(link => {
+        if (link.matches(':hover') || document.activeElement === link) {
+          link.classList.add('rh-dismissed');
+        }
+      });
+    });
+  },
+  /**
+   * Publication Filters
+   * Drives the "show selected / show all by date / show all by topic"
+   * switcher above the publications list. "selected" and "date" reorder
+   * cards by actually moving the DOM nodes (data-selected-order /
+   * data-date-order) rather than the CSS `order` property: `order` only
+   * changes paint position, not DOM position, so text selection, tab order,
+   * and screen readers would still follow the original date order and
+   * visibly desync from what's on screen. "topic" reveals the topic chip
+   * row and filters to whichever single chip is active; no active chip
+   * shows everything.
+   */
+  pubFilters: function () {
+    const list = document.getElementById('pubList');
+    if (list == null) return;
+    const cardsByDate = Array.from(list.querySelectorAll('.blog'))
+      .sort((a, b) => Number(a.dataset.dateOrder) - Number(b.dataset.dateOrder));
+    const cardsBySelected = cardsByDate
+      .filter(card => card.dataset.selectedOrder)
+      .sort((a, b) => Number(a.dataset.selectedOrder) - Number(b.dataset.selectedOrder));
+    const modeButtons = document.querySelectorAll('.pub-mode-btn');
+    const topicBar = document.getElementById('pubTopicBar');
+    const topicChips = document.querySelectorAll('.pub-topic-chip');
+    let mode = 'selected';
+    // At most one topic active at a time (radio-button behavior, not a
+    // multi-select filter): picking a topic clears whichever was picked before.
+    let activeTopic = null;
+
+    function render() {
+      modeButtons.forEach(btn => {
+        const isActive = btn.dataset.mode === mode;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', String(isActive));
+      });
+      topicBar.hidden = mode !== 'topic';
+      topicChips.forEach(chip => {
+        const isActive = chip.dataset.topic === activeTopic;
+        chip.classList.toggle('active', isActive);
+        chip.setAttribute('aria-pressed', String(isActive));
+      });
+
+      if (mode === 'selected') {
+        cardsByDate.forEach(card => { card.hidden = true; });
+        // appendChild on an already-attached node moves it, so this walk
+        // both reorders and reveals the five cards in one pass
+        cardsBySelected.forEach(card => {
+          card.hidden = false;
+          list.appendChild(card);
+        });
+        return;
+      }
+      cardsByDate.forEach(card => { list.appendChild(card); });
+      if (mode === 'date' || activeTopic === null) {
+        cardsByDate.forEach(card => { card.hidden = false; });
+        return;
+      }
+      cardsByDate.forEach(card => {
+        const topics = (card.dataset.topics || '').split(' ');
+        card.hidden = !topics.includes(activeTopic);
+      });
+    }
+
+    modeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        mode = btn.dataset.mode;
+        if (mode !== 'topic') activeTopic = null;
+        render();
+      });
+    });
+    topicChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const topic = chip.dataset.topic;
+        activeTopic = activeTopic === topic ? null : topic;
+        render();
+      });
+    });
+    render();
   },
   /**
    * Anchor Smooth Scroll
