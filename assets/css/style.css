@@ -37848,3 +37848,11 @@ footer.bg-dark.angled.upper-start:before {
     white-space: nowrap;
   }
 }
+/* Footer credit line. The theme's footer-link hover colour (#3f78e0) only
+   becomes visible now that the footer has links at all, and at 3.61:1 on
+   #21262c it fails WCAG AA for text this small; sage matches the site
+   palette and reaches 6.01:1. Specificity has to clear the theme's own
+   .bg-dark.text-inverse a:not(.btn):not([class*=link-]):hover rule. */
+footer.bg-dark.text-inverse .footer-credit a:not(.btn):hover {
+  color: #97a88a;
+}
